@@ -8,12 +8,15 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        dependencies = with pkgs; [ zig ];
+        dependencies = with pkgs; [ zig raylib ];
       in {
         packages.default = pkgs.stdenv.mkDerivation {
           name = "hello-zig";
           src = ./.;
           buildInputs = dependencies;
+          buildPhase = ''
+            zig build
+          '';
         };
         devShells.default = pkgs.mkShell { buildInputs = dependencies; };
       });
