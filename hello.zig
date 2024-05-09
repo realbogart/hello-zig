@@ -15,7 +15,7 @@ pub fn main() void
         ray.BeginDrawing();
         defer ray.EndDrawing();
 
-        ray.ClearBackground(ray.RAYWHITE);
-        ray.DrawText("Hello, Zig!", 190, 200, 20, ray.LIGHTGRAY);
+        ray.ClearBackground(ray.ORANGE);
+        ray.DrawText("Hello, Zig!", 190, 200, 20, ray.MAROON);
     }
 }
