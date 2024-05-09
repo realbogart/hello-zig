@@ -1,3 +1,3 @@
 ```bash
-nix run github:realbogart/hello-nix
+nix run github:realbogart/hello-zig
 ```
