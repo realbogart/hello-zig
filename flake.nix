@@ -9,5 +9,12 @@
       let
         pkgs = import nixpkgs { inherit system; };
         dependencies = with pkgs; [ zig ];
-      in { devShells.default = pkgs.mkShell { buildInputs = dependencies; }; });
+      in {
+        packages.default = pkgs.stdenv.mkDerivation {
+          name = "hello-zig";
+          src = ./.;
+          buildInputs = dependencies;
+        };
+        devShells.default = pkgs.mkShell { buildInputs = dependencies; };
+      });
 }
