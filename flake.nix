@@ -18,6 +18,14 @@
             zig build
           '';
         };
-        devShells.default = pkgs.mkShell { buildInputs = dependencies; };
+        devShells.default = pkgs.mkShell {
+          buildInputs = dependencies;
+          shellHook = ''
+            export RAYLIB_PATH_INCLUDE=${pkgs.raylib}/include
+            export RAYLIB_PATH_LIB=${pkgs.raylib}/lib
+            echo "RAYLIB_PATH_INCLUDE=$RAYLIB_PATH_INCLUDE"
+            echo "RAYLIB_PATH_LIB=$RAYLIB_PATH_LIB"
+          '';
+        };
       });
 }
